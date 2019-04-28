@@ -1,7 +1,7 @@
 public class Man {
 
-    private int x;
-    private int y;
+    int x;
+    int y;
     private String name;
     private Boolean inGame;
 
@@ -11,4 +11,5 @@ public class Man {
         this.name = name;
         inGame = true;
     }
+
 }

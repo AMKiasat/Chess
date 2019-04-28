@@ -6,7 +6,7 @@ public class Main {
         chess.printGround();
         Scanner scanner = new Scanner(System.in);
         String s;
-        while (true){
+        while (true) {
             s = scanner.nextLine();
 
         }

@@ -5,4 +5,8 @@ public class Pawn extends Man {
     public Pawn(int x, int y, String name) {
         super(x, y, name);
     }
+
+    public Boolean movement(int x,int y) {
+
+    }
 }
