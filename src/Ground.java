@@ -3,18 +3,18 @@ import java.util.ArrayList;
 public class Ground {
 
     private Man[][] ground;
-    private ArrayList<Man> chessMansW;
-    private ArrayList<Man> chessMansB;
+
+    public Man[][] getGround() {
+        return ground;
+    }
 
     public Ground() {
         ground = new Man[8][8];
-        chessMansB = new ArrayList<>();
-        chessMansW = new ArrayList<>();
         ground[0][7] = new Rook(7, 0, "WR1");
         ground[1][7] = new Knight(7, 1, "WN1");
         ground[2][7] = new Bishop(7, 2, "WB1");
         ground[3][7] = new Queen(7, 3, "WQ ");
-        ground[4][7] = new King(7, 4,"WK ");
+        ground[4][7] = new King(7, 4, "WK ");
         ground[5][7] = new Bishop(7, 5, "WB2");
         ground[6][7] = new Knight(7, 6, "WN2");
         ground[7][7] = new Rook(7, 7, "WR2");
@@ -48,25 +48,32 @@ public class Ground {
     }
 
     public void printGround() {
-        System.out.println("     A   B   C   D   E   F   G   H\n");
+        System.out.println("      A   B   C   D   E   F   G   H\n");
         for (int i = 0; i < 8; i++) {
-            System.out.print(8 - i + "  ");
+            System.out.print(8 - i + "   ");
             for (int j = 0; j < 8; j++) {
                 for (int k = 0; k < 8; k++)
-                    for (int g = 0; g < 8; g++){
+                    for (int g = 0; g < 8; g++) {
                         if (ground[g][k].getX() == i && ground[g][k].getY() == j) {
-                            System.out.print("|"+ground[g][k].getName());
+                            System.out.print("|" + ground[g][k].getName());
                         }
                     }
 
             }
-            System.out.println("|  " + (8 - i));
+            System.out.println("|   " + (8 - i));
 
         }
-        System.out.println("\n     A   B   C   D   E   F   G   H");
+        System.out.println("\n      A   B   C   D   E   F   G   H");
+    }
+
+    public boolean checkEmpty(int x, int y) {
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                if (ground[i][j].getX() == x && ground[i][j].getY() == y && ground[i][j].getName().equals("   "))
+                    return true;
+        return false;
     }
 }
-
 /*import java.util.ArrayList;
 
 public class Ground {

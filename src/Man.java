@@ -5,9 +5,9 @@ public class Man {
     private String name;
     private Boolean inGame;
 
-    public Man(int x, int y, String name) {
-        this.x = x;
-        this.y = y;
+    public Man(int y, int x, String name) {
+        this.y = x;
+        this.x = y;
         this.name = name;
         inGame = true;
     }
