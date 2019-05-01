@@ -12,4 +12,15 @@ public class Man {
         inGame = true;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -6,7 +6,7 @@ public class Pawn extends Man {
         super(x, y, name);
     }
 
-    public Boolean movement(int x,int y) {
-
-    }
+//    public Boolean movement(int x,int y) {
+//
+//    }
 }
