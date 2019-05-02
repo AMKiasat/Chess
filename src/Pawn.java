@@ -39,7 +39,7 @@ public class Pawn extends Man {
                     for (int i = 0; i < 8; i++)
                         for (int j = 0; j < 8; j++)
                             if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
-                                if (!(ground.getGround()[i][j].getName().equals("   "))) {
+                                if (!(ground.getGround()[i][j].getName().equals("   ")) && !(ground.getGround()[i][j].getName().toCharArray()[0] == this.name.toCharArray()[0])) {
                                     ground.getGround()[i][j] = new Empty(this.x, this.y, "   ");
                                     this.x = x;
                                     this.y = y;
@@ -78,7 +78,7 @@ public class Pawn extends Man {
                     for (int i = 0; i < 8; i++)
                         for (int j = 0; j < 8; j++)
                             if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
-                                if (!(ground.getGround()[i][j].getName().equals("   "))) {
+                                if (!(ground.getGround()[i][j].getName().equals("   ")) && !(ground.getGround()[i][j].getName().toCharArray()[0] == this.name.toCharArray()[0])) {
                                     ground.getGround()[i][j] = new Empty(this.x, this.y, "   ");
                                     this.x = x;
                                     this.y = y;
