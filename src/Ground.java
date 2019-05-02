@@ -19,7 +19,7 @@ public class Ground {
         ground[6][7] = new Knight(7, 6, "WN2");
         ground[7][7] = new Rook(7, 7, "WR2");
 
-        ground[0][6] = new Empty(6, 0, "   ");
+        ground[0][6] = new Pawn(6, 0, "WP1");
 
         ground[1][6] = new Pawn(6, 1, "WP2");
         ground[2][6] = new Pawn(6, 2, "WP3");

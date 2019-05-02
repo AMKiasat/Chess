@@ -79,6 +79,7 @@ public class Main {
                                     else turn = 'W';
                                 }
                             }
+                    break;
                 case 'N':
                     for (int i = 0; i < 8; i++)
                         for (int j = 0; j < 8; j++)
@@ -91,8 +92,46 @@ public class Main {
                                     else turn = 'W';
                                 }
                             }
+                    break;
                 case 'Q':
-
+                    for (int i = 0; i < 8; i++)
+                        for (int j = 0; j < 8; j++)
+                            if (chess.getGround()[i][j].getName().equals(man)) {
+                                if (!(((Queen) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
+                                    System.out.println("Wrong move!");
+                                else {
+                                    if (turn == 'W')
+                                        turn = 'B';
+                                    else turn = 'W';
+                                }
+                            }
+                    break;
+                case 'K':
+                        for (int i = 0; i < 8; i++)
+                            for (int j = 0; j < 8; j++)
+                                if (chess.getGround()[i][j].getName().equals(man)) {
+                                    if (!(((King) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
+                                        System.out.println("Wrong move!");
+                                    else {
+                                        if (turn == 'W')
+                                            turn = 'B';
+                                        else turn = 'W';
+                                    }
+                                }
+                        break;
+                case 'B':
+                    for (int i = 0; i < 8; i++)
+                        for (int j = 0; j < 8; j++)
+                            if (chess.getGround()[i][j].getName().equals(man)) {
+                                if (!(((Bishop) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
+                                    System.out.println("Wrong move!");
+                                else {
+                                    if (turn == 'W')
+                                        turn = 'B';
+                                    else turn = 'W';
+                                }
+                            }
+                    break;
 
 
 
