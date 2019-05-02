@@ -10,13 +10,13 @@ public class Main {
             String man = scanner.nextLine();
             char[] manColor = man.toCharArray();
             if (manColor[0] != turn) {
-                System.out.println("It's not your turn ! -_-");
+                System.out.println("It's not your turn! -_-");
                 continue;
             }
             String Move = scanner.nextLine();
             char[] move = Move.toCharArray();
-            int moveX;
-            int moveY;
+            int moveX = 0;
+            int moveY = 0;
             if (move[0] == 'A')
                 moveX = 0;
             if (move[0] == 'B')
@@ -51,23 +51,35 @@ public class Main {
             if (move[1] == '1')
                 moveY = 7;
 
-            for (int i = 0; i < 8; i++)
-                for (int j = 0; j < 8; j++) {
-                    if (chess.getGround()[i][j].getName().equals(man)) {
-                        chess.getGround()[i][j].mon
-                    }
-                }
+
+            switch (man.toCharArray()[1]) {
+                case 'R':
+                    for (int i = 0; i < 8; i++)
+                        for (int j = 0; j < 8; j++) {
+                            if (chess.getGround()[i][j].getName().equals(man)) {
+                                if (!(((Rook) (chess.getGround()[i][j])).movement(moveY, moveX, chess)))
+                                    System.out.println("Wrong move!");
+                                else {
+                                    if (turn == 'W')
+                                        turn = 'B';
+                                    else turn = 'W';
+                                }
+                            }
+                        }
+                    break;
+                case 'N':
+
+                case 'B':
+
+                case 'Q':
+
+
+            }
+
+            chess.printGround();
 
 
 
-
-
-
-
-
-            if (turn == 'W')
-                turn = 'B';
-            else turn = 'W';
         }
     }
 }

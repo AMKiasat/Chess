@@ -4,15 +4,14 @@ public class Rook extends Man {
         super(x, y, name);
     }
 
-    public Boolean movement(int x, int y, Ground ground) {
-        Boolean canMove = false;
+    public boolean movement(int x, int y, Ground ground) {
         if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
             if ((this.x == x || this.y == y)) {
                 for (int i = 1; this.x + i < x; i++) {
                     if (!ground.checkEmpty(this.x + i, y))
                         return false;
                 }
-                for (int i = 1; y + i < this.y; y++) {
+                for (int i = 1; y + i < this.y; i++) {
                     if (!ground.checkEmpty(x, y + i)) {
                         return false;
                     }
@@ -21,15 +20,28 @@ public class Rook extends Man {
                     if (!ground.checkEmpty(x, this.y + i))
                         return false;
                 }
-                for (int i = 1; x + i < this.y; y++) {
+                for (int i = 1; x + i < this.x; i++) {
                     if (!ground.checkEmpty(x + i, y)) {
                         return false;
                     }
                 }
+                for (int i = 0; i < 8; i++)
+                    for (int j = 0; j < 8; j++) {
+                        if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
+                            if (ground.getGround()[i][j].getName().equals("   ")) {
+                                ground.getGround()[i][j].setX(this.x);
+                                ground.getGround()[i][j].setY(this.y);
+                            } else if (ground.getGround()[i][j].getName().toCharArray()[0] == this.name.toCharArray()[0])
+                                return false;
+                            else
+                                ground.getGround()[i][j] = new Empty(this.x, this.y, "   ");
+                        }
+                    }
                 this.x = x;
                 this.y = y;
+                return true;
             }
         }
-        return canMove;
+        return false;
     }
 }

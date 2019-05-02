@@ -2,12 +2,12 @@ public class Man {
 
     int x;
     int y;
-    private String name;
+    String name;
     private Boolean inGame;
 
-    public Man(int y, int x, String name) {
-        this.y = x;
-        this.x = y;
+    public Man(int x, int y, String name) {
+        this.y = y;
+        this.x = x;
         this.name = name;
         inGame = true;
     }
@@ -22,5 +22,13 @@ public class Man {
 
     public String getName() {
         return name;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }

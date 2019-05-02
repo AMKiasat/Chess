@@ -7,13 +7,15 @@ public class Pawn extends Man {
         firstMove = true;
     }
 
-    public Boolean movement(int x, int y, Ground ground) {
+    public boolean movement(int x, int y, Ground ground) {
         Boolean canMove = false;
         if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
-            if (firstMove && this.y + 2 == y) {
-                canMove = true;
-            } else if (this.y + 1 == y) {
+            if (this.x == x) {
+                if (firstMove && this.y + 2 == y && ground.checkEmpty(this.x, this.y + 1) && ground.checkEmpty(this.x, this.y + 2)) {
 
+                } else if (this.y + 1 == y && ground.checkEmpty(this.x, this.y + 1)) {
+
+                }
             }
         }
         return canMove;
