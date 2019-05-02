@@ -7,17 +7,88 @@ public class Pawn extends Man {
         firstMove = true;
     }
 
-    public boolean movement(int x, int y, Ground ground) {
-        Boolean canMove = false;
+    public boolean movement(int y, int x, Ground ground) {
         if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
-            if (this.x == x) {
-                if (firstMove && this.y + 2 == y && ground.checkEmpty(this.x, this.y + 1) && ground.checkEmpty(this.x, this.y + 2)) {
-
-                } else if (this.y + 1 == y && ground.checkEmpty(this.x, this.y + 1)) {
-
+            if (name.toCharArray()[0] == 'W') {
+                if (this.y == y) {
+                    if (firstMove && this.x - 2 == x && ground.checkEmpty(this.x - 1, this.y) && ground.checkEmpty(this.x - 2, this.y)) {
+                        for (int i = 0; i < 8; i++)
+                            for (int j = 0; j < 8; j++) {
+                                if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
+                                    ground.getGround()[i][j].setX(this.x);
+                                    ground.getGround()[i][j].setY(this.y);
+                                    this.x = x;
+                                    this.y = y;
+                                    firstMove = false;
+                                    return true;
+                                }
+                            }
+                    } else if (this.x - 1 == x && ground.checkEmpty(this.x - 1, this.y)) {
+                        for (int i = 0; i < 8; i++)
+                            for (int j = 0; j < 8; j++)
+                                if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
+                                    ground.getGround()[i][j].setX(this.x);
+                                    ground.getGround()[i][j].setY(this.y);
+                                    this.x = x;
+                                    this.y = y;
+                                    firstMove = false;
+                                    return true;
+                                }
+                    }
+                } else if ((this.y == y + 1 || this.y == y - 1) && this.x - 1 == x) {
+                    for (int i = 0; i < 8; i++)
+                        for (int j = 0; j < 8; j++)
+                            if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
+                                if (!(ground.getGround()[i][j].getName().equals("   "))) {
+                                    ground.getGround()[i][j] = new Empty(this.x, this.y, "   ");
+                                    this.x = x;
+                                    this.y = y;
+                                    firstMove = false;
+                                    return true;
+                                }
+                            }
+                }
+            } else {
+                if (this.y == y) {
+                    if (firstMove && this.x + 2 == x && ground.checkEmpty(this.x + 1, this.y) && ground.checkEmpty(this.x + 2, this.y)) {
+                        for (int i = 0; i < 8; i++)
+                            for (int j = 0; j < 8; j++) {
+                                if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
+                                    ground.getGround()[i][j].setX(this.x);
+                                    ground.getGround()[i][j].setY(this.y);
+                                    this.x = x;
+                                    this.y = y;
+                                    firstMove = false;
+                                    return true;
+                                }
+                            }
+                    } else if (this.x + 1 == x) {
+                        for (int i = 0; i < 8; i++)
+                            for (int j = 0; j < 8; j++)
+                                if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
+                                    ground.getGround()[i][j].setX(this.x);
+                                    ground.getGround()[i][j].setY(this.y);
+                                    this.x = x;
+                                    this.y = y;
+                                    firstMove = false;
+                                    return true;
+                                }
+                    }
+                } else if ((this.y == y + 1 || this.y == y - 1) && this.x + 1 == x) {
+                    for (int i = 0; i < 8; i++)
+                        for (int j = 0; j < 8; j++)
+                            if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
+                                if (!(ground.getGround()[i][j].getName().equals("   "))) {
+                                    ground.getGround()[i][j] = new Empty(this.x, this.y, "   ");
+                                    this.x = x;
+                                    this.y = y;
+                                    firstMove = false;
+                                    return true;
+                                }
+                            }
                 }
             }
         }
-        return canMove;
+        return false;
     }
 }

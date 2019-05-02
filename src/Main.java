@@ -67,11 +67,23 @@ public class Main {
                             }
                         }
                     break;
-                case 'N':
-
+                case 'P':
+                    for (int i = 0; i < 8; i++)
+                        for (int j = 0; j < 8; j++)
+                            if (chess.getGround()[i][j].getName().equals(man)) {
+                                if (!(((Pawn) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
+                                    System.out.println("Wrong move!");
+                                else {
+                                    if (turn == 'W')
+                                        turn = 'B';
+                                    else turn = 'W';
+                                }
+                            }
                 case 'B':
 
                 case 'Q':
+
+
 
 
             }
