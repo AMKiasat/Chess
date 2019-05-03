@@ -19,37 +19,39 @@ public class Main {
 
             if (move[0] == 'A')
                 moveX = 0;
-            if (move[0] == 'B')
+            else if (move[0] == 'B')
                 moveX = 1;
-            if (move[0] == 'C')
+            else if (move[0] == 'C')
                 moveX = 2;
-            if (move[0] == 'D')
+            else if (move[0] == 'D')
                 moveX = 3;
-            if (move[0] == 'E')
+            else if (move[0] == 'E')
                 moveX = 4;
-            if (move[0] == 'F')
+            else if (move[0] == 'F')
                 moveX = 5;
-            if (move[0] == 'G')
+            else if (move[0] == 'G')
                 moveX = 6;
-            if (move[0] == 'H')
+            else if (move[0] == 'H')
                 moveX = 7;
+            else System.out.println("Wrong move");
 
             if (move[1] == '8')
                 moveY = 0;
-            if (move[1] == '7')
+            else if (move[1] == '7')
                 moveY = 1;
-            if (move[1] == '6')
+            else if (move[1] == '6')
                 moveY = 2;
-            if (move[1] == '5')
+            else if (move[1] == '5')
                 moveY = 3;
-            if (move[1] == '4')
+            else if (move[1] == '4')
                 moveY = 4;
-            if (move[1] == '3')
+            else if (move[1] == '3')
                 moveY = 5;
-            if (move[1] == '2')
+            else if (move[1] == '2')
                 moveY = 6;
-            if (move[1] == '1')
+            else if (move[1] == '1')
                 moveY = 7;
+            else System.out.println("Wrong move");
 
             switch (man.toCharArray()[1]) {
                 case 'R':
