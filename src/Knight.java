@@ -30,4 +30,10 @@ public class Knight extends Man {
         }
         return false;
     }
+
+    public boolean check(int y, int x) {
+        if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y))
+            return (this.x + 2 == x && this.y + 1 == y) || (this.x + 1 == x && this.y + 2 == y) || (this.x - 2 == x && this.y + 1 == y) || (this.x - 1 == x && this.y + 2 == y) || (this.x - 2 == x && this.y - 1 == y) || (this.x - 1 == x && this.y - 2 == y) || (this.x + 2 == x && this.y - 1 == y) || (this.x + 1 == x && this.y - 2 == y);
+        return false;
+    }
 }

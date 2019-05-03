@@ -91,4 +91,14 @@ public class Pawn extends Man {
         }
         return false;
     }
+
+    public boolean check(int y, int x) {
+        if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
+            if (name.toCharArray()[0] == 'W') {
+                return (this.y == y + 1 || this.y == y - 1) && this.x - 1 == x;
+            } else
+                return (this.y == y + 1 || this.y == y - 1) && this.x + 1 == x;
+        }
+        return false;
+    }
 }

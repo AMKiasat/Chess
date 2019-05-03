@@ -6,7 +6,7 @@ public class King extends Man {
 
     public boolean movement(int y, int x, Ground ground) {
         if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
-            if ((this.x + 1 == x && this.y + 1 == y) || (this.x + 1 == x && this.y == y) || (this.x + 1 == x && this.y - 1 == y) || (this.x == x && this.y + 1 == y) || (this.x == x && this.y - 1 == y) || (this.x - 1 == x && this.y + 1 == y) || (this.x - 1 == x && this.y == y) || (this.x - 1 == x && this.y - 1 == y)) {
+            if (((this.x + 1 == x && this.y + 1 == y) || (this.x + 1 == x && this.y == y) || (this.x + 1 == x && this.y - 1 == y) || (this.x == x && this.y + 1 == y) || (this.x == x && this.y - 1 == y) || (this.x - 1 == x && this.y + 1 == y) || (this.x - 1 == x && this.y == y) || (this.x - 1 == x && this.y - 1 == y)) && !((this.name.toCharArray()[0] == 'B' && ground.blackKingCheck(y, x)) || (this.name.toCharArray()[0] == 'W' && ground.whiteKingCheck(y, x)))) {
                 for (int i = 0; i < 8; i++)
                     for (int j = 0; j < 8; j++) {
                         if (ground.getGround()[i][j].getX() == x && ground.getGround()[i][j].getY() == y) {
@@ -26,9 +26,14 @@ public class King extends Man {
                             }
                         }
                     }
-
             }
         }
+        return false;
+    }
+
+    public boolean check(int y, int x) {
+        if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y))
+            return (this.x + 1 == x && this.y + 1 == y) || (this.x + 1 == x && this.y == y) || (this.x + 1 == x && this.y - 1 == y) || (this.x == x && this.y + 1 == y) || (this.x == x && this.y - 1 == y) || (this.x - 1 == x && this.y + 1 == y) || (this.x - 1 == x && this.y == y) || (this.x - 1 == x && this.y - 1 == y);
         return false;
     }
 }

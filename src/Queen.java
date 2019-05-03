@@ -91,4 +91,72 @@ public class Queen extends Man {
         }
         return false;
     }
+
+    public boolean check(int y, int x, Man[][] ground) {
+        if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
+            if ((this.x == x || this.y == y)) {
+                for (int i = 1; this.x + i < x; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == this.x + i && ground[k][z].getY() == y && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
+                for (int i = 1; y + i < this.y; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == x && ground[k][z].getY() == y + i && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
+                for (int i = 1; this.y + i < y; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == x && ground[k][z].getY() == this.y + i && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
+                for (int i = 1; x + i < this.x; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == x + i && ground[k][z].getY() == y && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
+                return true;
+            } else {
+                boolean inMoveLine = false;
+                for (int i = 1; i < 8; i++) {
+                    if (this.x + i == x && this.y + i == y) {
+                        inMoveLine = true;
+                        for (int j = 1; j < i; j++)
+                            for (int k = 0; k < 8; k++)
+                                for (int z = 0; z < 8; z++)
+                                    if (ground[k][z].getX() == this.x + j && ground[k][z].getY() == this.y + j && !ground[k][z].getName().equals("   "))
+                                        return false;
+                    } else if (this.x - i == x && this.y + i == y) {
+                        inMoveLine = true;
+                        for (int j = 1; j < i; j++)
+                            for (int k = 0; k < 8; k++)
+                                for (int z = 0; z < 8; z++)
+                                    if (ground[k][z].getX() == this.x - j && ground[k][z].getY() == this.y + j && !ground[k][z].getName().equals("   "))
+                                        return false;
+                    } else if (this.x - i == x && this.y - i == y) {
+                        inMoveLine = true;
+                        for (int j = 1; j < i; j++)
+                            for (int k = 0; k < 8; k++)
+                                for (int z = 0; z < 8; z++)
+                                    if (ground[k][z].getX() == this.x - j && ground[k][z].getY() == this.y - j && !ground[k][z].getName().equals("   "))
+                                        return false;
+                    } else if (this.x + i == x && this.y - i == y) {
+                        inMoveLine = true;
+                        for (int j = 1; j < i; j++)
+                            for (int k = 0; k < 8; k++)
+                                for (int z = 0; z < 8; z++)
+                                    if (ground[k][z].getX() == this.x + j && ground[k][z].getY() == this.y - j && !ground[k][z].getName().equals("   "))
+                                        return false;
+                    }
+                }
+                return inMoveLine;
+            }
+
+        }
+        return false;
+    }
 }

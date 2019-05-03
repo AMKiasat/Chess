@@ -8,8 +8,7 @@ public class Main {
         char turn = 'W';
         while (true) {
             String man = scanner.nextLine();
-            char[] manColor = man.toCharArray();
-            if (manColor[0] != turn) {
+            if (man.toCharArray()[0] != turn) {
                 System.out.println("It's not your turn! -_-");
                 continue;
             }
@@ -17,6 +16,7 @@ public class Main {
             char[] move = Move.toCharArray();
             int moveX = 0;
             int moveY = 0;
+
             if (move[0] == 'A')
                 moveX = 0;
             if (move[0] == 'B')
@@ -51,14 +51,13 @@ public class Main {
             if (move[1] == '1')
                 moveY = 7;
 
-
             switch (man.toCharArray()[1]) {
                 case 'R':
                     for (int i = 0; i < 8; i++)
                         for (int j = 0; j < 8; j++) {
                             if (chess.getGround()[i][j].getName().equals(man)) {
-                                if (!(((Rook) (chess.getGround()[i][j])).movement(moveY, moveX, chess)))
-                                    System.out.println("Wrong move!");
+                                if (!(((Rook) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
+                                    System.out.println("That move is not allowed!");
                                 else {
                                     if (turn == 'W')
                                         turn = 'B';
@@ -72,7 +71,7 @@ public class Main {
                         for (int j = 0; j < 8; j++)
                             if (chess.getGround()[i][j].getName().equals(man)) {
                                 if (!(((Pawn) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
-                                    System.out.println("Wrong move!");
+                                    System.out.println("That move is not allowed!");
                                 else {
                                     if (turn == 'W')
                                         turn = 'B';
@@ -85,7 +84,7 @@ public class Main {
                         for (int j = 0; j < 8; j++)
                             if (chess.getGround()[i][j].getName().equals(man)) {
                                 if (!(((Knight) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
-                                    System.out.println("Wrong move!");
+                                    System.out.println("That move is not allowed!");
                                 else {
                                     if (turn == 'W')
                                         turn = 'B';
@@ -98,7 +97,7 @@ public class Main {
                         for (int j = 0; j < 8; j++)
                             if (chess.getGround()[i][j].getName().equals(man)) {
                                 if (!(((Queen) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
-                                    System.out.println("Wrong move!");
+                                    System.out.println("That move is not allowed!");
                                 else {
                                     if (turn == 'W')
                                         turn = 'B';
@@ -107,24 +106,11 @@ public class Main {
                             }
                     break;
                 case 'K':
-                        for (int i = 0; i < 8; i++)
-                            for (int j = 0; j < 8; j++)
-                                if (chess.getGround()[i][j].getName().equals(man)) {
-                                    if (!(((King) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
-                                        System.out.println("Wrong move!");
-                                    else {
-                                        if (turn == 'W')
-                                            turn = 'B';
-                                        else turn = 'W';
-                                    }
-                                }
-                        break;
-                case 'B':
                     for (int i = 0; i < 8; i++)
                         for (int j = 0; j < 8; j++)
                             if (chess.getGround()[i][j].getName().equals(man)) {
-                                if (!(((Bishop) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
-                                    System.out.println("Wrong move!");
+                                if (!(((King) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
+                                    System.out.println("That move is not allowed!");
                                 else {
                                     if (turn == 'W')
                                         turn = 'B';
@@ -132,15 +118,24 @@ public class Main {
                                 }
                             }
                     break;
-
-
-
+                case 'B':
+                    for (int i = 0; i < 8; i++)
+                        for (int j = 0; j < 8; j++)
+                            if (chess.getGround()[i][j].getName().equals(man)) {
+                                if (!(((Bishop) (chess.getGround()[i][j])).movement(moveX, moveY, chess)))
+                                    System.out.println("That move is not allowed!");
+                                else {
+                                    if (turn == 'W')
+                                        turn = 'B';
+                                    else turn = 'W';
+                                }
+                            }
+                    break;
+                default:
+                    System.out.println("We don't have that kind of chessman");
             }
-
             chess.printGround();
-
-
-
+            System.out.println(chess.blackKingCheck(4,4) + "" + chess.whiteKingCheck(4,5));
         }
     }
 }

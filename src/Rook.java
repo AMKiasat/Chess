@@ -4,7 +4,7 @@ public class Rook extends Man {
         super(x, y, name);
     }
 
-    public boolean movement(int x, int y, Ground ground) {
+    public boolean movement(int y, int x, Ground ground) {
         if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
             if ((this.x == x || this.y == y)) {
                 for (int i = 1; this.x + i < x; i++) {
@@ -39,6 +39,39 @@ public class Rook extends Man {
                     }
                 this.x = x;
                 this.y = y;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean check(int y, int x, Man[][] ground) {
+        if (x >= 0 && x < 8 && y >= 0 && y < 8 && !(this.x == x && this.y == y)) {
+            if ((this.x == x || this.y == y)) {
+                for (int i = 1; this.x + i < x; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == this.x + i && ground[k][z].getY() == y && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
+                for (int i = 1; y + i < this.y; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == x && ground[k][z].getY() == y + i && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
+                for (int i = 1; this.y + i < y; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == x && ground[k][z].getY() == this.y + i && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
+                for (int i = 1; x + i < this.x; i++) {
+                    for (int k = 0; k < 8; k++)
+                        for (int z = 0; z < 8; z++)
+                            if (ground[k][z].getX() == x + i && ground[k][z].getY() == y && !ground[k][z].getName().equals("   "))
+                                return false;
+                }
                 return true;
             }
         }
