@@ -135,7 +135,6 @@ public class Main {
                     System.out.println("We don't have that kind of chessman");
             }
             chess.printGround();
-            System.out.println(chess.blackKingCheck(4,4) + "" + chess.whiteKingCheck(4,5));
         }
     }
 }
