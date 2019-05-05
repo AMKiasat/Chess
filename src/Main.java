@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class Main {
+    public void kuft(){
+
+    }
     public static void main(String[] args) {
         Ground chess = new Ground();
         chess.printGround();

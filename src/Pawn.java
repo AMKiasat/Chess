@@ -4,7 +4,12 @@ public class Pawn extends Man {
 
     public Pawn(int x, int y, String name) {
         super(x, y, name);
-        firstMove = true;
+        if (name.toCharArray()[0] == 'W' && x == 6)
+            firstMove = true;
+        else if (name.toCharArray()[0] == 'B' && x == 1)
+            firstMove = true;
+        else
+            firstMove = false;
     }
 
     public boolean movement(int y, int x, Ground ground) {
